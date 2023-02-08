@@ -6,7 +6,8 @@ class DirectorsController < ApplicationController
   end
 
   def wisest
-    @list_of_directors = Director.all
+    @oldest_director = Director.where.not({:dob => nil}).order({ :dob => :asc}).at(0)
+    
     render({:template => "director_template/eldest.html.erb"})
   end
 
