@@ -17,6 +17,15 @@ class DirectorsController < ApplicationController
     render({:template => "director_template/youngest.html.erb"})
   end
 
+  def director_details
+    #params looks like {"the_id" => "42"}
+
+   the_id = params.fetch("an_id")  
+    
+    @the_director = Director.where({ :id => the_id })
+
+    render({:template => "director_template/show.html.erb"})
+  end
 
 
 end
